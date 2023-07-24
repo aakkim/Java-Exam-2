@@ -1,5 +1,8 @@
 package rocks.zipcode.assessment2.collections;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * Use a map to solve
  */
@@ -8,8 +11,13 @@ public class MonthConversion {
      * @param monthNumber - ordinal of month in the year; i.e. January = 1, February = 2
      * @param monthName - name of month
      */
-    public void add(Integer monthNumber, String monthName) {
+    private Map<Integer, String> month;
 
+    public MonthConversion() {
+        month = new TreeMap<>();
+    }
+    public void add(Integer monthNumber, String monthName) {
+        month.put(monthNumber, monthName);
     }
 
     /**
@@ -17,7 +25,15 @@ public class MonthConversion {
      * @return the name of the respective month
      */
     public String getName(Integer monthNumber) {
-        throw new NullPointerException();
+        try {
+            if(month.get(monthNumber)==null) {
+                throw new NullPointerException();
+            }
+            month.get(monthNumber);
+        } catch(NullPointerException e) {
+            System.out.println("Null pointer exception");
+        }
+        return month.get(monthNumber);
     }
 
     /**
@@ -25,7 +41,17 @@ public class MonthConversion {
      * @return - the ordinal of the month in the year
      */
     public int getNumber(String monthName) {
-        return (Integer)null;
+        int num = 0;
+        if(!month.containsValue(monthName)) {
+            return (Integer)null;
+        } else {
+            for(int m: month.keySet()) {
+                if(month.get(m).equals(monthName)) {
+                    num = m;
+                }
+            }
+        }
+        return num;
     }
 
     /**
@@ -33,7 +59,7 @@ public class MonthConversion {
      * @return true if the monthNumber is in the keySet
      */
     public Boolean isValidNumber(Integer monthNumber) {
-        return null;
+        return month.containsKey(monthNumber);
     }
 
     /**
@@ -41,14 +67,14 @@ public class MonthConversion {
      * @return true if the monthName is in the valueSet
      */
     public Boolean isValidMonth(String monthName) {
-        return null;
+        return month.containsValue(monthName);
     }
 
     /**
      * @return number of entries in this mapping
      */
     public Integer size() {
-        return -1;
+        return month.size();
     }
 
     /**
@@ -56,6 +82,8 @@ public class MonthConversion {
      * @param monthName - name of month
      */
     public void update(Integer monthNumber, String monthName) {
-
+        if(month.containsKey(monthNumber)) {
+            month.put(monthNumber, monthName);
+        }
     }
 }

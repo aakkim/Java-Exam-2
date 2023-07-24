@@ -7,7 +7,7 @@ public class BasicStringUtils {
      * @return concatenation of `string1` and `string2`
      */
     public static String concatentate(String string1, String string2) {
-        return null;
+        return string1 + string2;
     }
 
     /**
@@ -15,7 +15,11 @@ public class BasicStringUtils {
      * @return an identical string with characters in reverse order
      */
     public static String reverse(String string1) {
-        return null;
+        String reverse = "";
+        for(int i=string1.length()-1; i>=0; i--) {
+            reverse += string1.charAt(i);
+        }
+        return reverse;
     }
 
     /**
@@ -24,7 +28,15 @@ public class BasicStringUtils {
      * @return concatenation of the reverse of `string1` and reverse of `string2`
      */
     public static String reverseThenConcatenate(String string1, String string2) {
-        return null;
+        String reverse1 = "";
+        String reverse2 = "";
+        for(int i=string1.length()-1; i>=0; i--) {
+            reverse1 += string1.charAt(i);
+        }
+        for(int i=string2.length()-1; i>=0; i--) {
+            reverse2 += string2.charAt(i);
+        }
+        return reverse1 + reverse2;
     }
 
     /**
@@ -33,7 +45,14 @@ public class BasicStringUtils {
      * @return `string` with `charactersToRemove` removed
      */
     public static String removeCharacters(String string, String charactersToRemove) {
-        return null;
+        String newString = "";
+        for(int i=0; i<string.length(); i++) {
+            char c = string.charAt(i);
+            if(charactersToRemove.indexOf(c) == -1) { // if character in string doesn't exist
+                newString += c;
+            }
+        }
+        return newString;
     }
 
     /**
@@ -42,6 +61,17 @@ public class BasicStringUtils {
      * @return reverse of `string` with `charactersToRemove` removed
      */
     public static String removeCharactersThenReverse(String string, String charactersToRemove) {
-        return null;
+        String newString = "";
+        String reverse = "";
+        for(int i=0; i<string.length(); i++) {
+            char c = string.charAt(i);
+            if(charactersToRemove.indexOf(c) == -1) { // if character in string doesn't exist
+                newString += c;
+            }
+        }
+        for(int i=newString.length()-1; i>=0; i--) {
+            reverse += newString.charAt(i);
+        }
+        return reverse;
     }
 }
