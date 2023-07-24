@@ -75,12 +75,18 @@ public class Address {
 
     @Override
     public boolean equals(Object o) {
-
+        //return null if the passed object is null
         if(o==null) {
             return (Boolean) null;
         }
-        return true;
-
+        //compares current object with passed object, returns true if they are the same
+        if(this==o) {
+            return true;
+        }
+        //cast the passed object to Address class and then return the comparison of each field values
+        Address obj = (Address) o;
+        return addressLine1.equals(obj.addressLine1) && addressLine2.equals(obj.addressLine2) &&
+                city.equals(obj.city) && state.equals(obj.state) && zipcode.equals(obj.zipcode);
     }
 
     @Override
