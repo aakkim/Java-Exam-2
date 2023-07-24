@@ -19,7 +19,7 @@ public class Inventory {
      * nullary constructor initializes a new list
      */
     public Inventory() {
-        this.strings = new ArrayList<>();
+        this.strings = new ArrayList<>(); //create new list
     }
 
     /**
@@ -41,8 +41,9 @@ public class Inventory {
      * @return - return the number of items
      */
     public Integer getItemQuantity(String item) {
-        Integer numOfItems = 0;
+        Integer numOfItems = 0; //use as counter
         for(String s:strings) {
+            //loop through strings list, increment numOfItems by 1 every time an item equals the given item
             if(s.equals(item)) {
                 numOfItems++;
             }
