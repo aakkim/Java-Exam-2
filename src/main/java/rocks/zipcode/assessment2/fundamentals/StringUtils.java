@@ -10,7 +10,12 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by left-padding
      */
     public static String padLeft(String stringToBePadded, int amountOfPadding) {
-        return null;
+        int pad = amountOfPadding - stringToBePadded.length();
+        String padSpace = "";
+        for(int i=1; i<=pad; i++) {
+            padSpace += " ";
+        }
+        return padSpace + stringToBePadded;
     }
 
     /**
@@ -19,7 +24,12 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by right-padding
      */
     public static String padRight(String stringToBePadded, int amountOfPadding) {
-        return null;
+        int pad = amountOfPadding - stringToBePadded.length();
+        String padSpace = "";
+        for(int i=1; i<=pad; i++) {
+            padSpace += " ";
+        }
+        return stringToBePadded + padSpace;
     }
 
     /**
@@ -28,7 +38,11 @@ public class StringUtils {
      * @return the string repeated and concatenated `n` times
      */
     public static String repeatString(String stringToBeRepeated, int numberOfTimeToRepeat) {
-        return null;
+        String repeated = "";
+        for(int i=1; i<=numberOfTimeToRepeat; i++) {
+            repeated += stringToBeRepeated;
+        }
+        return repeated;
     }
 
     /**
@@ -36,7 +50,23 @@ public class StringUtils {
      * @return - true if string only contains alpha characters
      */
     public static Boolean isAlphaString(String string) {
-        return null;
+
+        for(int i=0; i<string.length(); i++) {
+            // using Character class method isLetter and isWhitespace to check if character is a space or letter
+            if(!(Character.isLetter(string.charAt(i))) && !(Character.isWhitespace(string.charAt(i)))) {
+                return false;
+            }
+        }
+        return true;
+
+
+//        for(int i=0; i<string.length(); i++) {
+//            char c = string.charAt(i);
+//            if(!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z') && !(c==' ')) {
+//                return false;
+//            }
+//        }
+//        return true;
     }
 
     /**
@@ -44,7 +74,13 @@ public class StringUtils {
      * @return - true if string only contains numeric characters
      */
     public static Boolean isNumericString(String string) {
-        return null;
+        for(int i=0; i<string.length(); i++) {
+            // using Character class method isDigit, we check if the character is a digit
+            if(!(Character.isDigit(string.charAt(i)))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -52,6 +88,12 @@ public class StringUtils {
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        return null;
+        return string.matches("[^\\w]+");
+        /* regular expression to not match any alphanumeric characters
+        ^ means not
+        \\w means any word/alphanumeric character
+        + means one or more occurrences
+        the entire expression says match with any characters that is not alphanumeric
+         */
     }
 }
